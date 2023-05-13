@@ -6,7 +6,7 @@ abstract class Database
     public $sname='localhost';
     public $uname='root';
     public $password='';
-    public $dbname = 'fermano';
+    public $dbname ='fermano';
     
     public function __construct($conn){
         $this->conn = new mysqli($this->sname, $this->uname, $this->password);
@@ -20,11 +20,4 @@ abstract class Database
     
 }
 
-// class Students extends Database
-// {
-//     public function insert()
-//     {
-//         return "Elessa";
-//     }
-
-// }
+ 
