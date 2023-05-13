@@ -8,16 +8,23 @@ abstract class Database
     public $password='';
     public $dbname ='fermano';
     
-    public function __construct($conn){
-        $this->conn = new mysqli($this->sname, $this->uname, $this->password);
-        $db = "CREATE DATABASE IF NOT EXISTS $this->dbname";
-        $this->conn->query($db);
-
-        var_dump($db);
+    public function __construct()
+    {
+        $this->conn = new mysqli($this->sname, $this->uname, $this->password);      
     }
 
-    abstract public function insert() : string;
+    abstract public function createDB(): string;
     
 }
 
- 
+class Students extends Database
+{
+    public function createDB(): string
+    {
+        $db = "CREATE DATABASE IF NOT EXISTS $this->dbname";
+        return $this->conn->query($db);
+    }
+}
+
+$d = new Students;
+$d->createDB();
